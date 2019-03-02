@@ -1,6 +1,6 @@
-# firebaseとvueでソーシャルログインを実装
+# FirebaseとVueでソーシャルログインを実装
 
-タイトルままですが、firebaseとvueでソーシャルログインを実装しました。
+タイトルままですが、FirebaseとVueでソーシャルログインを実装しました。
 
 https://authentication-sample-001.firebaseapp.com/
 

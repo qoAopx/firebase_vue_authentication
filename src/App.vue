@@ -1,80 +1,72 @@
 <template>
   <div id="app">
     <div id="nav">
-      <div
-        v-if="authentication_status"
-        id="authentication">
-        <User :user="authentication_user" />
-        <button @click="signOut">
-          サインアウト
-        </button>
+      <div v-if="authentication_status" id="authentication">
+        <User :user="authentication_user"/>
+        <button @click="signOut">サインアウト</button>
       </div>
-      <router-link to="/home">
-        Home
-      </router-link>|
-      <router-link to="/about">
-        About
-      </router-link>
+      <router-link to="/home">Home</router-link>|
+      <router-link to="/about">About</router-link>
     </div>
     <div v-if="authentication_status === true">
-      <router-view />
+      <router-view/>
     </div>
     <div v-if="authentication_status === false">
-      <SignIn />
+      <SignIn/>
     </div>
     <div v-if="authentication_status === null">
-      <Uncertain />
+      <Uncertain/>
     </div>
   </div>
 </template>
 
 <script>
-import firebase from 'firebase/app'
+import firebase from "firebase/app";
 
-import User from '@/components/authentication/User.vue'
-import SignIn from '@/components/authentication/SignIn.vue'
-import Uncertain from '@/components/authentication/Uncertain.vue'
+import User from "@/components/authentication/User.vue";
+import SignIn from "@/components/authentication/SignIn.vue";
+import Uncertain from "@/components/authentication/Uncertain.vue";
 
 export default {
-  name: 'App',
+  name: "App",
   components: {
     User,
     SignIn,
     Uncertain
   },
   computed: {
-    authentication_user: function () {
-      return this.$store.state.user
+    authentication_user: function() {
+      return this.$store.state.user;
     },
-    authentication_status: function () {
-      return this.$store.state.status
+    authentication_status: function() {
+      return this.$store.state.status;
     }
   },
-  mounted: function () {
-    firebase.auth().onAuthStateChanged(this.authStateChanged)
+  mounted: function() {
+    firebase.auth().onAuthStateChanged(this.authStateChanged);
   },
   methods: {
-    signOut: function () {
+    signOut: function() {
       firebase
         .auth()
         .signOut()
-        .then(function () {
+        .then(function() {
           // Sign-out successful.
         })
-        .catch(function (error) {
-          console.log('error', error)
-        })
+        .catch(function(error) {
+          console.log("error", error);
+        });
     },
-    authStateChanged: function (user) {
+    authStateChanged: function(user) {
       if (user) {
-        this.$store.commit('signIn', user)
-        console.log(user)
+        this.$store.commit("signIn", user);
+        console.log(user);
       } else {
-        this.$store.commit('signOut')
+        this.$store.commit("signOut");
       }
     }
   }
-}
+};
 </script>
 
 <style>
@@ -89,7 +81,7 @@ export default {
 #authentication {
   border: 1px solid blue;
   background-color: #fafaff;
-  margin: 0 25vw 1rem 25vw;
+  margin: 1rem;
   padding: 1rem;
 }
 </style>
