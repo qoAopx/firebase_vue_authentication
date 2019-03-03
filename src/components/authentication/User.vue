@@ -2,16 +2,14 @@
   <div>
     <h3>ログインしてます</h3>
     <template v-if="user">
-      <div
-        v-for="(u,i) in user.providerData"
-        :key="i">
+      <div v-for="(u,i) in user.providerData" :key="i">
         <table>
           <caption v-if="u.providerId">
             <h4>{{ u.providerId }}</h4>
           </caption>
           <thead>
             <tr v-if="u.uid">
-              <th>item</th>
+              <th style="width:140px;">item</th>
               <th>value</th>
             </tr>
           </thead>
@@ -31,9 +29,7 @@
             <tr v-if="u.photoURL">
               <td>photoURL</td>
               <td>
-                <img
-                  :src="u.photoURL"
-                  style="height:64px;">
+                <img :src="u.photoURL" style="height:64px;">
               </td>
             </tr>
             <tr v-if="user.phoneNumber">
@@ -49,13 +45,15 @@
 
 <script>
 export default {
-  name: 'App',
-  props: ['user']
+  name: "App",
+  props: ["user"]
 };
 </script>
 
 <style scoped>
 table {
+  width: 100%;
+  max-width: 480px;
   border-collapse: collapse;
   border: 1px solid #aaaaaa;
   background-color: #eeeeee;
@@ -69,6 +67,7 @@ th {
   background-color: #eeeeee;
 }
 td {
+  word-break: break-all;
   border: 1px solid #aaaaaa;
   background-color: #ffffff;
   padding: 0.2rem 1rem;
