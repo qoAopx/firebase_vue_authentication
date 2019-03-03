@@ -1,7 +1,7 @@
-import Vue from 'vue'
-import Vuex from 'vuex'
+import Vue from 'vue';
+import Vuex from 'vuex';
 
-Vue.use(Vuex)
+Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
@@ -10,13 +10,13 @@ export default new Vuex.Store({
   },
   mutations: {
     signIn (state, user) {
-      state.status = true
-      state.user = user
+      state.status = true;
+      state.user = user;
     },
     signOut (state) {
-      state.status = false
-      state.user = null
+      state.status = false;
+      state.user = null;
     }
   },
   actions: {}
-})
+});

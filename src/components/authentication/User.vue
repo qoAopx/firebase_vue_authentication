@@ -2,7 +2,9 @@
   <div>
     <h3>ログインしてます</h3>
     <template v-if="user">
-      <div v-for="(u,i) in user.providerData" :key="i">
+      <div
+        v-for="(u,i) in user.providerData"
+        :key="i">
         <table>
           <caption v-if="u.providerId">
             <h4>{{ u.providerId }}</h4>
@@ -29,7 +31,9 @@
             <tr v-if="u.photoURL">
               <td>photoURL</td>
               <td>
-                <img :src="u.photoURL" style="height:64px;">
+                <img
+                  :src="u.photoURL"
+                  style="height:64px;">
               </td>
             </tr>
             <tr v-if="user.phoneNumber">
@@ -45,8 +49,8 @@
 
 <script>
 export default {
-  name: "App",
-  props: ["user"]
+  name: 'App',
+  props: ['user']
 };
 </script>
 

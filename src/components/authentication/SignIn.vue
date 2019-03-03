@@ -7,17 +7,17 @@
 </template>
 
 <script>
-import firebase from 'firebase/app'
+import firebase from 'firebase/app';
 // import firebaseui from "firebaseui"; // 英語版
-import firebaseui from 'firebaseui-ja' // 日本語版
-import 'firebaseui/dist/firebaseui.css'
+import firebaseui from 'firebaseui-ja'; // 日本語版
+import 'firebaseui/dist/firebaseui.css';
 
 export default {
   name: 'SignIn',
   mounted: function () {
-    let ui = firebaseui.auth.AuthUI.getInstance()
+    let ui = firebaseui.auth.AuthUI.getInstance();
     if (!ui) {
-      ui = new firebaseui.auth.AuthUI(firebase.auth())
+      ui = new firebaseui.auth.AuthUI(firebase.auth());
     }
     const options = {
       signInOptions: [
@@ -26,10 +26,10 @@ export default {
         firebase.auth.TwitterAuthProvider.PROVIDER_ID,
         firebase.auth.GithubAuthProvider.PROVIDER_ID
       ]
-    }
-    ui.start('#firebaseui-auth-container', options)
+    };
+    ui.start('#firebaseui-auth-container', options);
   }
-}
+};
 </script>
 
 <style scoped>
