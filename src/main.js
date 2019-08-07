@@ -10,7 +10,8 @@ const config = {
   databaseURL: 'https://authentication-sample-001.firebaseio.com',
   projectId: 'authentication-sample-001',
   storageBucket: 'authentication-sample-001.appspot.com',
-  messagingSenderId: '454648867512'
+  messagingSenderId: '454648867512',
+  appId: '1:454648867512:web:74385d3d7b628331'
 };
 firebase.initializeApp(config);
 
