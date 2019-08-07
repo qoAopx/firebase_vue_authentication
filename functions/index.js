@@ -6,21 +6,21 @@ const admin = require('firebase-admin');
 
 admin.initializeApp();
 exports.helloWorld = functions.https.onRequest((request, response) => {
-    //response.send("Hello from Firebase!");
-    //console.log(request.headers.authorization);
-    response.header({
-        "Access-Control-Allow-Origin": "*",
-        "Access-Control-Allow-Headers": "Content-Type"
+  //response.send("Hello from Firebase!");
+  //console.log(request.headers.authorization);
+  response.header({
+    'Access-Control-Allow-Origin': '*',
+    'Access-Control-Allow-Headers': 'Content-Type'
+  });
+  try {
+    const token = request.headers.authorization.split('Bearer ')[1];
+    admin.auth().verifyIdToken(token).then(r => {
+      console.log(r);
+      response.json(r);
+    }).catch(e => {
+      response.json(e);
     });
-    try {
-        const token = request.headers.authorization.split('Bearer ')[1];
-        admin.auth().verifyIdToken(token).then(r => {
-            console.log(r);
-            response.json(r);
-        }).catch(e => {
-            response.json(e);
-        });
-    } catch (e) {
-        response.json(e);
-    }
+  } catch (e) {
+    response.json(e);
+  }
 });
