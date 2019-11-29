@@ -1,12 +1,6 @@
 {
   "hosting": {
     "public": "dist",
-    "rewrites": [
-      {
-        "source": "/functions",
-        "function": "helloWorld"
-      }
-    ],
     "ignore": [
       "firebase.json",
       "**/.*",

@@ -19,13 +19,6 @@ export default {
     if (!ui) {
       ui = new firebaseui.auth.AuthUI(firebase.auth());
     }
-
-    for (let key of Object.keys(firebase.auth)) {
-      const p = firebase.auth[key];
-      console.log(key, Object.keys(p));
-    }
-    console.log(new firebase.auth.OAuthProvider('yahoo.co.jp').providerId);
-
     const options = {
       signInOptions: [
         firebase.auth.EmailAuthProvider.PROVIDER_ID,

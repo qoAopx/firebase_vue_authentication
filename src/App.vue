@@ -1,8 +1,5 @@
 <template>
   <div id="app">
-    <button @click="beep">
-      Beep
-    </button>
     <div id="nav">
       <div
         v-if="authentication_status"
@@ -57,34 +54,8 @@ export default {
   },
   mounted: function () {
     firebase.auth().onAuthStateChanged(this.authStateChanged);
-    createjs.Sound.registerSound('/sound.mp3', 'soundID');
   },
   methods: {
-    beep: function() {
-      console.log('beep');
-      //createjs.Sound.registerSound('/sound.mp3', 'soundID');
-      const s = new Date();
-      createjs.Sound.play('soundID');
-      console.log(new Date() - s);
-    },
-    checkAuth: function () {
-      firebase
-        .auth()
-        .currentUser.getIdToken()
-        .then(function (token) {
-          fetch('/functions', {
-            headers: {
-              Authorization: `Bearer ${token}`
-            }
-          })
-            .then(res => {
-              console.log(res.json());
-            })
-            .catch(e => {
-              console.log(e);
-            });
-        });
-    },
     signOut: function () {
       firebase
         .auth()
@@ -99,7 +70,7 @@ export default {
     authStateChanged: function (user) {
       if (user) {
         this.$store.commit('signIn', user);
-        console.log(user);
+        // console.log(user);
       } else {
         this.$store.commit('signOut');
       }
