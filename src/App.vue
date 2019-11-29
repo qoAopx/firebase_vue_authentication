@@ -1,5 +1,8 @@
 <template>
   <div id="app">
+    <button @click="beep">
+      Beep
+    </button>
     <div id="nav">
       <div
         v-if="authentication_status"
@@ -29,6 +32,8 @@
 </template>
 
 <script>
+/* eslint-disable no-undef */
+
 import firebase from 'firebase/app';
 
 import User from '@/components/authentication/User.vue';
@@ -52,8 +57,16 @@ export default {
   },
   mounted: function () {
     firebase.auth().onAuthStateChanged(this.authStateChanged);
+    createjs.Sound.registerSound('/sound.mp3', 'soundID');
   },
   methods: {
+    beep: function() {
+      console.log('beep');
+      //createjs.Sound.registerSound('/sound.mp3', 'soundID');
+      const s = new Date();
+      createjs.Sound.play('soundID');
+      console.log(new Date() - s);
+    },
     checkAuth: function () {
       firebase
         .auth()
