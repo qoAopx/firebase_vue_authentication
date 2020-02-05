@@ -11,6 +11,6 @@ jobs:
     - uses: actions/checkout@v2
     - name: Build Vue Project
       run: |
-        yarn install,
-        yarn build
+        npm install,
+        npm build
         
