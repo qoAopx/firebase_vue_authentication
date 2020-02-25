@@ -8,9 +8,10 @@
 
 <script>
 import firebase from 'firebase/app';
-// import firebaseui from "firebaseui"; // 英語版
+//import firebaseui from 'firebaseui'; // 英語版
+//import 'firebaseui/dist/firebaseui.css';
 import firebaseui from 'firebaseui-ja'; // 日本語版
-import 'firebaseui/dist/firebaseui.css';
+import 'firebaseui-ja/dist/firebaseui.css';
 
 export default {
   name: 'SignIn',
