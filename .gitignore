@@ -1,3 +1,4 @@
 dist
 node_modules
 .firebase
+yarn-error.log
