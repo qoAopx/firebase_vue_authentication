@@ -4,7 +4,7 @@
       <div
         v-if="authentication_status"
         id="authentication">
-        <User :user="authentication_user" />
+        <UserList :user="authentication_user" />
         <button @click="signOut">
           サインアウト
         </button>
@@ -33,14 +33,14 @@
 
 import firebase from 'firebase/app';
 
-import User from '@/components/authentication/User.vue';
+import UserList from '@/components/authentication/UserList.vue';
 import SignIn from '@/components/authentication/SignIn.vue';
 import Uncertain from '@/components/authentication/Uncertain.vue';
 
 export default {
   name: 'App',
   components: {
-    User,
+    UserList,
     SignIn,
     Uncertain
   },
@@ -69,8 +69,8 @@ export default {
     },
     authStateChanged: function (user) {
       if (user) {
+        console.table(user);
         this.$store.commit('signIn', user);
-        // console.log(user);
       } else {
         this.$store.commit('signOut');
       }
