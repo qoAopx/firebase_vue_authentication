@@ -29,6 +29,8 @@
 </template>
 
 <script>
+/* eslint-disable no-undef */
+
 import firebase from 'firebase/app';
 
 import User from '@/components/authentication/User.vue';
@@ -54,24 +56,6 @@ export default {
     firebase.auth().onAuthStateChanged(this.authStateChanged);
   },
   methods: {
-    checkAuth: function () {
-      firebase
-        .auth()
-        .currentUser.getIdToken()
-        .then(function (token) {
-          fetch('/functions', {
-            headers: {
-              Authorization: `Bearer ${token}`
-            }
-          })
-            .then(res => {
-              console.log(res.json());
-            })
-            .catch(e => {
-              console.log(e);
-            });
-        });
-    },
     signOut: function () {
       firebase
         .auth()
@@ -86,7 +70,7 @@ export default {
     authStateChanged: function (user) {
       if (user) {
         this.$store.commit('signIn', user);
-        console.log(user);
+        // console.log(user);
       } else {
         this.$store.commit('signOut');
       }
