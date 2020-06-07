@@ -69,7 +69,7 @@ export default {
     },
     authStateChanged: function (user) {
       if (user) {
-        console.table(user);
+        console.log(user);
         this.$store.commit('signIn', user);
       } else {
         this.$store.commit('signOut');

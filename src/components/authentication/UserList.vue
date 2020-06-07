@@ -2,6 +2,9 @@
   <div>
     <h3>ログインしてます</h3>
     <template v-if="user">
+      <h3>
+        Firebase Auth UID : {{ user.uid }}
+      </h3>
       <UserDetail :user="user" />
       <div
         v-for="(u,i) in user.providerData"
